@@ -54,3 +54,25 @@
                 };
         };
 };
+
+ / {
+    behaviors {
+        td_backspace: tap_dance {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = "<2>";
+            bindings = <&kp BSPC>, <&mt LALT BSPC>;  // Single tap: BSPC, Double tap: Alt + BSPC
+        };
+    };
+
+    keymap {
+        compatible = "zmk,keymap";
+        layer_0 {
+            bindings = <
+                &td_backspace  // Tap once for Backspace, tap twice for Alt+Backspace
+                &kp C
+                &kp D
+            >;
+        };
+    };
+};
+
